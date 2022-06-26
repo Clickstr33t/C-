@@ -62,4 +62,12 @@ namespace TeamSystem.Corso.Strutture.Codice
         }
     }
 
+    struct Ordine
+    {
+        public int CodiceCliente { get; set; }
+        public int CodiceOrdine { get; set; }
+        public decimal Importo  { get; set; }
+        public DateTime DataOrdine { get; set; }
+
+    }
 }

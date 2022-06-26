@@ -19,7 +19,7 @@ namespace TeamSystem.Corso.Strutture
     }
 
     internal class Program
-    {
+    { 
         static List<Cliente> GetClienti()
         {
             List<Cliente> ris = new List<Cliente>();
@@ -61,12 +61,41 @@ namespace TeamSystem.Corso.Strutture
             return ris;
 
         }
+        static List<Ordine> GetOrdini()
+        {
+            List<Ordine> ris = new List<Ordine>();
+            ris.Add(new Ordine()
+            {
+                CodiceCliente = 1,
+                CodiceOrdine = 1,
+                Importo = 1000,
+                DataOrdine = DateTime.Now
+            });
+            ris.Add(new Ordine()
+            {
+                CodiceCliente = 1,
+                CodiceOrdine = 2,
+                Importo = 2000,
+                DataOrdine = DateTime.Now
+            });
+            ris.Add(new Ordine()
+            {
+                CodiceCliente = 2,
+                CodiceOrdine = 3,
+                Importo = 4000,
+                DataOrdine = DateTime.Now
+            });
+            return ris;
+        }
         //===============Main==========================
         static void Main(String[] args)
         {
             List<Cliente> Clienti = GetClienti();
+            List<Ordine> Ordini = GetOrdini();
 
-            // Voglio otterenere una lista con soli clienti italiani
+            //*************QUERY CON EXTESION METHODS*****************
+
+            //  EXE EXE EXE  Voglio otterenere una lista con soli clienti italiani
             //ToList() è un metodo di materializzazione da query a oggetto List            
             var clientiItalia = Clienti
                 .Where(x => x.Nazione == "IT")
@@ -78,7 +107,7 @@ namespace TeamSystem.Corso.Strutture
                 Console.WriteLine(clienti.RagioneSociale);
             }
 
-            // Voglio otternere il cliente con codice 1
+            //  EXE EXE EXE  Voglio otternere il cliente con codice 1
             var cliente = Clienti
                 .Where(x => x.CodiceCliente ==10)
                 .FirstOrDefault(); // Se non trova nulla restituisce valore nullo
@@ -88,12 +117,12 @@ namespace TeamSystem.Corso.Strutture
                 Console.WriteLine(cliente.CodiceCliente + ": "+cliente.RagioneSociale);
             }
 
-            // Voglio sommare tutti gli importi dei clienti
+            //  EXE EXE EXE  Voglio sommare tutti gli importi dei clienti
             var sommaImporto = Clienti
                 .Sum(x => x.Importo);
             Console.WriteLine(sommaImporto);
 
-            // Volgio restituire solo uno specifico campo
+            //  EXE EXE EXE  Volgio restituire solo uno specifico campo
             var demo = Clienti
                 //.Select(x => x.CodiceCliente)
                 .Select(x => new { Cod = x.CodiceCliente, Rag = x.RagioneSociale })  //PER PIU CAMPI new + {camp1, campo2}
@@ -103,7 +132,7 @@ namespace TeamSystem.Corso.Strutture
                 Console.WriteLine(item.Cod + " - " + item.Rag);
             }
 
-            //Vogliamo ottenere il risultato totale per nazione
+            // EXE EXE EXE  Vogliamo ottenere il risultato totale per nazione
             var statistiche = Clienti
                 .GroupBy(x => x.Nazione)
                 .Select(x => new {  Nazione = x.Key, 
@@ -111,6 +140,8 @@ namespace TeamSystem.Corso.Strutture
                                     Conteggio = x.Count(),
                                     Media = x.Average(y => y.Importo)                
                                   })
+                //.Where(x => x.Somma > 20000) // Posso applicare tutte le extenction methods
+                .OrderByDescending(x => x.Conteggio)
                 .ToList();
             foreach (var item in statistiche)
             {
@@ -122,7 +153,85 @@ namespace TeamSystem.Corso.Strutture
                 Console.WriteLine("---------------------------");
 
             }
-            // DAY 2 VIDEO 2 1:01:16
+
+            //  EXE EXE EXE  Voglio fare un join della lista Clienti e Ordini
+
+            var clientiOrdini = Clienti
+                .Join(
+                    Ordini,
+                    x => x.CodiceCliente,
+                    y => y.CodiceCliente,
+                    (x, y) => new {
+                        Cliente = x.CodiceCliente,
+                        Nazione = x.Nazione,
+                        Ordine = y.CodiceOrdine,
+                        ImportoOrdine = y.Importo
+                    }
+                )
+                //.Take(2) //Permette di selezionare il primo, i primi due etc..
+                .ToList();
+
+            foreach (var item in clientiOrdini)
+            {
+                Console.WriteLine(
+                    "Cliente "+item.Cliente +
+                    " di nazionalità " + item.Nazione +
+                    " > Ordine "+ item.Ordine +
+                    " di importo " + item.ImportoOrdine);
+            }
+
+            // EXE EXE EXE Voglio restituire il cliente con importo più alto
+
+            var maxCliente = Clienti
+                .Select(x => new
+                {
+                    ID = x.CodiceCliente,
+                    Importo = x.Importo,
+                })
+                .OrderByDescending(x => x.Importo)
+                .Take(1)
+                .ToList();
+                
+
+            Console.WriteLine(
+                "ALTO IMPORTO Cliente: " + 
+                maxCliente[0].ID +
+                " Importo : " +
+                maxCliente[0].Importo);
+
+            // EXE EXE EXE Voglio restituire il cliente con importo più alto per singola nazione
+
+            var maxPerNazione = Clienti
+                .GroupBy(x => x.Nazione)
+                .Select(x => new
+                {
+                    Nazione = x.Key,
+                    Max = x.Max(y => y.Importo)
+                })
+                .ToList();
+
+            Console.WriteLine("VALRE MASSIMO PER NAZIONE:");
+            foreach (var item in maxPerNazione)
+            {
+                Console.WriteLine(item.Nazione + " >>> " + item.Max);
+            }
+     
+
+            // ********** QUERY CON LINQ ***************
+
+            var clientiDemo1 = (from x in Clienti
+                               where x.Nazione == "IT"
+                               select x)
+                               .ToList();
+            Console.WriteLine("*********  CON LINQ ***********");
+            foreach (var item in clientiDemo1)
+            {
+                Console.WriteLine("Nome: " + item.RagioneSociale);
+                Console.WriteLine("ID: " + item.CodiceCliente);
+                Console.WriteLine("Nazione: " + item.Nazione);
+                Console.WriteLine("-------------------");
+            }
+            Console.WriteLine("*********  CON LINQ ***********");
         }
         // ==============Main per testare collections================
         static void Main_collections(String[] args)
