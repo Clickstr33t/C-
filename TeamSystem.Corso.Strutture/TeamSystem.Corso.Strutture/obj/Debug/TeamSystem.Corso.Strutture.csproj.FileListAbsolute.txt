@@ -1,0 +1,8 @@
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Strutture\TeamSystem.Corso.Strutture\bin\Debug\TeamSystem.Corso.Strutture.exe.config
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Strutture\TeamSystem.Corso.Strutture\bin\Debug\TeamSystem.Corso.Strutture.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Strutture\TeamSystem.Corso.Strutture\bin\Debug\TeamSystem.Corso.Strutture.pdb
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Strutture\TeamSystem.Corso.Strutture\obj\Debug\TeamSystem.Corso.Strutture.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Strutture\TeamSystem.Corso.Strutture\obj\Debug\TeamSystem.Corso.Strutture.csproj.SuggestedBindingRedirects.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Strutture\TeamSystem.Corso.Strutture\obj\Debug\TeamSystem.Corso.Strutture.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Strutture\TeamSystem.Corso.Strutture\obj\Debug\TeamSystem.Corso.Strutture.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Strutture\TeamSystem.Corso.Strutture\obj\Debug\TeamSystem.Corso.Strutture.pdb

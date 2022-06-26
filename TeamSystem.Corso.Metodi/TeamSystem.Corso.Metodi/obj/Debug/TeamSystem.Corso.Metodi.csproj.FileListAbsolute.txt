@@ -1,0 +1,8 @@
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Metodi\TeamSystem.Corso.Metodi\bin\Debug\TeamSystem.Corso.Metodi.exe.config
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Metodi\TeamSystem.Corso.Metodi\bin\Debug\TeamSystem.Corso.Metodi.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Metodi\TeamSystem.Corso.Metodi\bin\Debug\TeamSystem.Corso.Metodi.pdb
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Metodi\TeamSystem.Corso.Metodi\obj\Debug\TeamSystem.Corso.Metodi.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Metodi\TeamSystem.Corso.Metodi\obj\Debug\TeamSystem.Corso.Metodi.csproj.SuggestedBindingRedirects.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Metodi\TeamSystem.Corso.Metodi\obj\Debug\TeamSystem.Corso.Metodi.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Metodi\TeamSystem.Corso.Metodi\obj\Debug\TeamSystem.Corso.Metodi.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Metodi\TeamSystem.Corso.Metodi\obj\Debug\TeamSystem.Corso.Metodi.pdb

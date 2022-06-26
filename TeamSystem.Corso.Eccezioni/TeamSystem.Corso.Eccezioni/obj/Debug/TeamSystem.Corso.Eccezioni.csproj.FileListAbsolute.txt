@@ -1,0 +1,8 @@
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Eccezioni\TeamSystem.Corso.Eccezioni\bin\Debug\TeamSystem.Corso.Eccezioni.exe.config
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Eccezioni\TeamSystem.Corso.Eccezioni\bin\Debug\TeamSystem.Corso.Eccezioni.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Eccezioni\TeamSystem.Corso.Eccezioni\bin\Debug\TeamSystem.Corso.Eccezioni.pdb
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Eccezioni\TeamSystem.Corso.Eccezioni\obj\Debug\TeamSystem.Corso.Eccezioni.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Eccezioni\TeamSystem.Corso.Eccezioni\obj\Debug\TeamSystem.Corso.Eccezioni.csproj.SuggestedBindingRedirects.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Eccezioni\TeamSystem.Corso.Eccezioni\obj\Debug\TeamSystem.Corso.Eccezioni.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Eccezioni\TeamSystem.Corso.Eccezioni\obj\Debug\TeamSystem.Corso.Eccezioni.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.Eccezioni\TeamSystem.Corso.Eccezioni\obj\Debug\TeamSystem.Corso.Eccezioni.pdb
