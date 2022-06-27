@@ -1,0 +1,11 @@
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\bin\Debug\TeamSystem.corso.Classi.exe.config
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\bin\Debug\TeamSystem.corso.Classi.exe
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\bin\Debug\TeamSystem.corso.Classi.pdb
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\obj\Debug\TeamSystem.corso.Classi.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\obj\Debug\TeamSystem.corso.Classi.csproj.SuggestedBindingRedirects.cache
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\obj\Debug\TeamSystem.corso.Classi.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\obj\Debug\TeamSystem.corso.Classi.exe
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\obj\Debug\TeamSystem.corso.Classi.pdb
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\bin\Debug\TeamSystem.Corso.Framework.dll
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\bin\Debug\TeamSystem.Corso.Framework.pdb
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.corso.Classi\obj\Debug\TeamSystem.corso.Classi.csproj.CopyComplete

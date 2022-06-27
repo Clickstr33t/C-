@@ -1,0 +1,8 @@
+C:\Users\service.mae\source\repos\DesignPattern.FactoryMethod\DesignPattern.FactoryMethod\bin\Debug\DesignPattern.FactoryMethod.exe.config
+C:\Users\service.mae\source\repos\DesignPattern.FactoryMethod\DesignPattern.FactoryMethod\bin\Debug\DesignPattern.FactoryMethod.exe
+C:\Users\service.mae\source\repos\DesignPattern.FactoryMethod\DesignPattern.FactoryMethod\bin\Debug\DesignPattern.FactoryMethod.pdb
+C:\Users\service.mae\source\repos\DesignPattern.FactoryMethod\DesignPattern.FactoryMethod\obj\Debug\DesignPattern.FactoryMethod.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\DesignPattern.FactoryMethod\DesignPattern.FactoryMethod\obj\Debug\DesignPattern.FactoryMethod.csproj.SuggestedBindingRedirects.cache
+C:\Users\service.mae\source\repos\DesignPattern.FactoryMethod\DesignPattern.FactoryMethod\obj\Debug\DesignPattern.FactoryMethod.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\DesignPattern.FactoryMethod\DesignPattern.FactoryMethod\obj\Debug\DesignPattern.FactoryMethod.exe
+C:\Users\service.mae\source\repos\DesignPattern.FactoryMethod\DesignPattern.FactoryMethod\obj\Debug\DesignPattern.FactoryMethod.pdb

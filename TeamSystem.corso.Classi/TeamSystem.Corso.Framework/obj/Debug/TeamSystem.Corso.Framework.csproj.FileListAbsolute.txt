@@ -1,0 +1,6 @@
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.Corso.Framework\bin\Debug\TeamSystem.Corso.Framework.dll
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.Corso.Framework\bin\Debug\TeamSystem.Corso.Framework.pdb
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.Corso.Framework\obj\Debug\TeamSystem.Corso.Framework.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.Corso.Framework\obj\Debug\TeamSystem.Corso.Framework.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.Corso.Framework\obj\Debug\TeamSystem.Corso.Framework.dll
+C:\Users\service.mae\source\repos\TeamSystem.corso.Classi\TeamSystem.Corso.Framework\obj\Debug\TeamSystem.Corso.Framework.pdb
