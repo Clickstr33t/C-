@@ -5,6 +5,19 @@ namespace TeamSystem.Corso.Strutture.Codice
     // ***********DICHIARAZIONE STRUCTS *************
     struct Cliente
     {
+        // **************** INIZIALIZZAZIONE EVENTI *****************
+        /*
+         Per creare un evento bisogna fare le seguent operazioni:
+        1(EVENTO) - Dichiarare un DELEGATO con relativa firma all'interno della struttura
+        2(EVENTO) - Dichiarare un EVENTO di tipo DELEGATO all'interno della struttura
+        3(EVENTO) - Settare la condizione sul setter per lanciare l'evento >>> ATTENZIONE ricordati di mettere il controllo "if (OnCambioPIVA != null)"
+        4(EVENTO) - Istanziare nel Main la struttura nel quale attaccare l'evento
+        5(EVENTO) - Effettuare il subscribe dell'evento nell'instanza nel Main >> TAB genera in automatico l'evento
+         */
+        public delegate void CambioPIVADelegate(string VecchiaPiva, string NuovaPiva);  // 1(EVENTO) Dichiarazione DELEGATO
+        public event CambioPIVADelegate OnCambioPIVA;                                   // 2(EVENTO) Dichiarazione EVENTO (Ricorda di inizializzare i costruttori della struttura) 
+
+
         //*******************PROPRIETA*************************
 
         // (prop + TABx2) property formato compatto
@@ -27,6 +40,13 @@ namespace TeamSystem.Corso.Strutture.Codice
                 {
                     throw new Exception("Partita iva non corretta, minimo 10 caratteri");
                 }
+                if (value!= _partitaIVA)            //3 (EVENTO) chiam l'evento se il nuovo valore è diverso dal precedente
+                {
+                    if (OnCambioPIVA != null)       //3 (EVENTO) controllo OnCambiPIVA sia stato effettivamente instanziato
+                    {
+                        OnCambioPIVA(_partitaIVA, value);
+                    }
+                }
                 _partitaIVA = value;
             }
         }
@@ -44,6 +64,7 @@ namespace TeamSystem.Corso.Strutture.Codice
             this.Nazione = "IT";
             this.CodiceCliente = 0;
             this.Importo = 0;
+            this.OnCambioPIVA = null;
 
             // ========logica aggiuntiva============
 
@@ -59,8 +80,10 @@ namespace TeamSystem.Corso.Strutture.Codice
             this.Nazione = "IT";
             this.CodiceCliente = 0;
             this.Importo = 0;
+            this.OnCambioPIVA = null;
         }
     }
+
 
     struct Ordine
     {

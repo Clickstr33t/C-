@@ -61,6 +61,7 @@ namespace TeamSystem.Corso.Strutture
             return ris;
 
         }
+        
         static List<Ordine> GetOrdini()
         {
             List<Ordine> ris = new List<Ordine>();
@@ -87,8 +88,30 @@ namespace TeamSystem.Corso.Strutture
             });
             return ris;
         }
-        //===============Main==========================
+
+        // ===============Main per testare creazione di strutture con EVENTI ===========================
         static void Main(String[] args)
+        {
+            List<Cliente> Clienti = GetClienti();
+            List<Ordine> Ordini = GetOrdini();
+
+            var clienteConEvento = new Cliente() { PartitaIVA = "000111111111" };      // 4(EVENTO) - Istanza della struttura dove attaccare l'evento
+
+            clienteConEvento.OnCambioPIVA += ClienteEvento_OnCambioPIVA;              // 5(EVENTO) - Subscribe dell'evento nella istanza (PREMI TAB PER GENERARE AUTOMATICAMENTE L'EVENTO)
+            clienteConEvento.PartitaIVA = "ProvaCambioPartitaIVA";
+            clienteConEvento.PartitaIVA = "UlterioreCambioPIVA";
+        }
+
+        // 5(EVENTO) - Metodo generato automaticamente premendo TAB
+        private static void ClienteEvento_OnCambioPIVA(string VecchiaPiva, string NuovaPiva)
+        {
+            Console.WriteLine(string.Format("PIVA modificata da {0} a {1}", VecchiaPiva, NuovaPiva)); 
+        }
+
+
+
+        //===============Main per testare EXTENSION METHODS ==========================
+        static void Main_Extension_Methods(String[] args)
         {
             List<Cliente> Clienti = GetClienti();
             List<Ordine> Ordini = GetOrdini();
@@ -189,15 +212,14 @@ namespace TeamSystem.Corso.Strutture
                     Importo = x.Importo,
                 })
                 .OrderByDescending(x => x.Importo)
-                .Take(1)
-                .ToList();
+                .FirstOrDefault();
                 
 
             Console.WriteLine(
                 "ALTO IMPORTO Cliente: " + 
-                maxCliente[0].ID +
+                maxCliente.ID +
                 " Importo : " +
-                maxCliente[0].Importo);
+                maxCliente.Importo);
 
             // EXE EXE EXE Voglio restituire il cliente con importo più alto per singola nazione
 
@@ -233,7 +255,7 @@ namespace TeamSystem.Corso.Strutture
             }
             Console.WriteLine("*********  CON LINQ ***********");
         }
-        // ==============Main per testare collections================
+        // ==============Main per testare COLLECTIONS ================
         static void Main_collections(String[] args)
         {
 
@@ -296,7 +318,7 @@ namespace TeamSystem.Corso.Strutture
         }
 
 
-        // =================== Main per testare structs =====================
+        // =================== Main per testare STRUCTS =====================
         static void Main_Strutture(String[] args)
         {
 
@@ -317,7 +339,7 @@ namespace TeamSystem.Corso.Strutture
 
 
         }
-        // ==========================Main per testare enum ============================
+        // ==========================Main per testare ENUM ============================
         static void Main_enum(string[] args)
         {
             Tipologia t = Tipologia.DDT;
