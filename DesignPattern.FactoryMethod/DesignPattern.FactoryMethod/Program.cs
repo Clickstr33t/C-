@@ -20,6 +20,9 @@ namespace DesignPattern.FactoryMethod
 
             switch (car.ToLower())
             {
+                case "shit":
+                    factory = new ShitFactory(0,0);
+                    break;
                 case "moneyback":
                     factory = new MoneyBackFactory(50000, 0);
                     break;

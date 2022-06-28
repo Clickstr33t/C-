@@ -47,9 +47,11 @@
     <Compile Include="Codice\CreditCard.cs" />
     <Compile Include="Codice\MoneyBackCreditCard.cs" />
     <Compile Include="Codice\MoneyBackFactory.cs" />
+    <Compile Include="Codice\SheetCreditCard.cs" />
     <Compile Include="Codice\PlatinumCreditCard.cs" />
     <Compile Include="Codice\PlatinumFactory.cs" />
     <Compile Include="Codice\TitaniumCreditCard.cs" />
+    <Compile Include="Codice\SheetFactory.cs" />
     <Compile Include="Codice\TitaniumFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
