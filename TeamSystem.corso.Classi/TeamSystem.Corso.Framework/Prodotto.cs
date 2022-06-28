@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeamSystem.Corso.Framework
 {
-    public class Prodotto
+    public partial class Prodotto
     {
         static Random unit = new Random();
         public string NomeProdotto { get; set; }
@@ -15,6 +15,11 @@ namespace TeamSystem.Corso.Framework
         public static int GeneraCodice()
         {
             return unit.Next(100);
+        }
+
+        public override string ToString()
+        {
+            return String.Format("CODE: {0} - NOME: {1} - PREZZO: {2}", this.CodiceProdotto,this.NomeProdotto,this.PrezzoListino);
         }
     }
 }

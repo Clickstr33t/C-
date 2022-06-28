@@ -11,7 +11,96 @@ namespace TeamSystem.Corso.Classi
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] strings)
+        {
+            //Le strutture non posso essere dichiarati null per ovviare esisto i nullable type
+            decimal? importo = 4;
+            DateTime? date = null;
+            //quando dichiariamo un nullable type integriamo la property hasValue
+            if (importo.HasValue)
+            {
+                Console.WriteLine("Value: " + importo.Value);
+            }
+            else
+            {
+                Console.WriteLine("Hasn't value.");
+            }
+
+
+            //Richiamare props di una partial class
+            Prodotto testPartial = new Prodotto();
+            testPartial.QtaMagazzino = 0; //props dichiarata in partial
+
+
+            //Richiamare CUSTOM EXTENSION METHODS >> Extension.cs
+            string test1 = "prova@.it";
+            Console.WriteLine("test1 = \"prova@.it\"");
+            Console.WriteLine("test1.isEmail(): " + test1.isEmail());
+            Console.WriteLine("test1.isEmail(\".it\"): " + test1.isEmail(".it"));
+            Console.WriteLine("test1.isEmail(\".teamsystem\"): " + test1.isEmail(".teamsystem"));
+
+
+            Prodotti elencoProd = new Prodotti();
+            elencoProd.Add(new Prodotto() { CodiceProdotto = 1, PrezzoListino = 20, NomeProdotto = "Prodotto1" });
+            elencoProd.Add(new Prodotto() { CodiceProdotto = 2, PrezzoListino = 5, NomeProdotto = "Prodotto2" });
+            elencoProd.Add(new Prodotto() { CodiceProdotto = 3, PrezzoListino = 10, NomeProdotto = "Prodotto3" });
+            elencoProd.Add(new Prodotto() { CodiceProdotto = 4, PrezzoListino = 8, NomeProdotto = "Prodotto4" });
+
+            //Richiamare metodo custom di una classe che estende una lista
+
+            try
+            {
+                Console.WriteLine(string.Format("Prezzo Medio: {0}",elencoProd.prezzoMedioProperty));
+                Console.WriteLine("getProdottoWithHighestPrice():");
+                Console.WriteLine(elencoProd.getProdottoWithHighestPriceProperty);
+                Console.WriteLine("getProdottoByCodice(2):");
+                Console.WriteLine(elencoProd.getProdottoByCodice(2));
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+        }
+        static void Main_Studio_Eredita_Custom_Exception(string[] args)
+        {
+            //Gestione della custom exception
+
+            PersonaBase pEx = new PersonaBase();
+            try
+            {
+                pEx.DataNascita = new DateTime(2023,1, 1);
+
+            }
+            catch (DataNascitaException e)
+            {
+                Console.WriteLine("ERRORE DATA NASCITA EXCEPTION: " + e.DataConErrore.ToString("yyyy/mm/dd"));
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("ERRORE GENERICO" + e.Message);
+            }
+
+
+            //Dimostrazione eredità costruttori
+            PersonaBase p1 = new PersonaBase("SDFSDLJLJ453LJ45J");
+            Console.WriteLine(p1.DataNascita);
+            Impiegato i1 = new Impiegato("BBBBBBB");
+            Console.WriteLine(i1.DataNascita);
+            Console.WriteLine(i1.CodiceFiscale);
+
+            //Dimostrazione eredità tramite override di ToString() 
+            PersonaBase p = new PersonaBase() { NomeCognome="Andrea Paffi", DataNascita=new DateTime(1986,12,11), CodiceFiscale="PFFNDR86T11L117X"};
+            Console.WriteLine(p.ToString());
+            Impiegato i = new Impiegato() { Matricola= "AX34D3", NomeCognome="Andrea Paffi", DataNascita=new DateTime(1986,12,11), CodiceFiscale="PFFNDR86T11L117X"};
+            Console.WriteLine(i.ToString());
+
+            //Test override prop Impiegato
+            //i1.DataNascita = new DateTime(1979, 1, 1); //Lancia un eccezione perche minore di 1980/1/1
+
+        }
+        static void Main_Studio_Sort_e_Clone(string[] args)
         {
             // ========== TEST METODO CLONE ===============
             Fattura f1 = new Fattura();

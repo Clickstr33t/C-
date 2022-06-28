@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DA3BFE4B-DE10-4AC8-B884-D70658DD348E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TeamSystem.Corso.Framework</RootNamespace>
-    <AssemblyName>TeamSystem.Corso.Framework</AssemblyName>
+    <ProjectGuid>{E49E5995-FC64-453E-8D69-E979B5FE49E6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Teamsystem.Corso.DatiLocali</RootNamespace>
+    <AssemblyName>Teamsystem.Corso.DatiLocali</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,19 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataNascitaException.cs" />
-    <Compile Include="Dirigent.cs" />
-    <Compile Include="DTT.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="Fattura.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="IDocumento.cs" />
-    <Compile Include="Impiegato.cs" />
-    <Compile Include="PersonaBase.cs" />
-    <Compile Include="Prodotti.cs" />
-    <Compile Include="Prodotto.cs" />
-    <Compile Include="ProdottoPartial.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

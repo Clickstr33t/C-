@@ -1,0 +1,8 @@
+C:\Users\service.mae\source\repos\Teamsystem.Corso.DatiLocali\Teamsystem.Corso.DatiLocali\bin\Debug\Teamsystem.Corso.DatiLocali.exe.config
+C:\Users\service.mae\source\repos\Teamsystem.Corso.DatiLocali\Teamsystem.Corso.DatiLocali\bin\Debug\Teamsystem.Corso.DatiLocali.exe
+C:\Users\service.mae\source\repos\Teamsystem.Corso.DatiLocali\Teamsystem.Corso.DatiLocali\bin\Debug\Teamsystem.Corso.DatiLocali.pdb
+C:\Users\service.mae\source\repos\Teamsystem.Corso.DatiLocali\Teamsystem.Corso.DatiLocali\obj\Debug\Teamsystem.Corso.DatiLocali.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\Teamsystem.Corso.DatiLocali\Teamsystem.Corso.DatiLocali\obj\Debug\Teamsystem.Corso.DatiLocali.csproj.SuggestedBindingRedirects.cache
+C:\Users\service.mae\source\repos\Teamsystem.Corso.DatiLocali\Teamsystem.Corso.DatiLocali\obj\Debug\Teamsystem.Corso.DatiLocali.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\Teamsystem.Corso.DatiLocali\Teamsystem.Corso.DatiLocali\obj\Debug\Teamsystem.Corso.DatiLocali.exe
+C:\Users\service.mae\source\repos\Teamsystem.Corso.DatiLocali\Teamsystem.Corso.DatiLocali\obj\Debug\Teamsystem.Corso.DatiLocali.pdb
