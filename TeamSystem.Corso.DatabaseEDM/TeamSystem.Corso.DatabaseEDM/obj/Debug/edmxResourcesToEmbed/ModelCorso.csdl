@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CorsoTeamSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Clienti">
+    <Key>
+      <PropertyRef Name="IDCliente" />
+    </Key>
+    <Property Name="IDCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Ordini" Relationship="Self.FK_Ordini_Clienti" FromRole="Clienti" ToRole="Ordini" />
+    <Property Name="PartitaIVA" Type="Binary" MaxLength="50" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Ordini">
+    <Key>
+      <PropertyRef Name="IDOrdine" />
+    </Key>
+    <Property Name="IDOrdine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="DataOrdine" Type="DateTime" Precision="3" />
+    <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Clienti" Relationship="Self.FK_Ordini_Clienti" FromRole="Ordini" ToRole="Clienti" />
+  </EntityType>
+  <Association Name="FK_Ordini_Clienti">
+    <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+    <End Role="Ordini" Type="Self.Ordini" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clienti">
+        <PropertyRef Name="IDCliente" />
+      </Principal>
+      <Dependent Role="Ordini">
+        <PropertyRef Name="IDCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CorsoTeamSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clienti" EntityType="Self.Clienti" />
+    <EntitySet Name="Ordini" EntityType="Self.Ordini" />
+    <AssociationSet Name="FK_Ordini_Clienti" Association="Self.FK_Ordini_Clienti">
+      <End Role="Clienti" EntitySet="Clienti" />
+      <End Role="Ordini" EntitySet="Ordini" />
+    </AssociationSet>
+    <EntitySet Name="vOrdini" EntityType="CorsoTeamSystemModel.vOrdini" />
+    <FunctionImport Name="p_InserisciCiente">
+      <Parameter Name="RagioneSociale" Mode="In" Type="String" />
+      <Parameter Name="nazione" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="vOrdini">
+    <Key>
+      <PropertyRef Name="IDCliente" />
+    </Key>
+    <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DataOrdine" Type="DateTime" Precision="3" />
+    <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+</Schema>

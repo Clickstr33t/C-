@@ -1,0 +1,14 @@
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\bin\Debug\TeamSystem.Corso.DatabaseEDM.exe.config
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\bin\Debug\TeamSystem.Corso.DatabaseEDM.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\bin\Debug\TeamSystem.Corso.DatabaseEDM.pdb
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\bin\Debug\EntityFramework.dll
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\bin\Debug\EntityFramework.xml
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\bin\Debug\it\EntityFramework.resources.dll
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\obj\Debug\TeamSystem.Corso.DatabaseEDM.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\obj\Debug\TeamSystem.Corso.DatabaseEDM.csproj.SuggestedBindingRedirects.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\obj\Debug\TeamSystem.Corso.DatabaseEDM.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\obj\Debug\TeamSystem.Corso.DatabaseEDM.csproj.CopyComplete
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\obj\Debug\TeamSystem.Corso.DatabaseEDM.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DatabaseEDM\TeamSystem.Corso.DatabaseEDM\obj\Debug\TeamSystem.Corso.DatabaseEDM.pdb

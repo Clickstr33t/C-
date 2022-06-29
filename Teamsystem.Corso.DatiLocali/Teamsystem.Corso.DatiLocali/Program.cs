@@ -11,7 +11,11 @@ namespace Teamsystem.Corso.DatiLocali
     {
         static void Main(string[] args)
         {
-            string percorso = @"c:\teamsystemtemp\dati\daElaborare\";
+
+            //=====================LETTURA DATI =====================
+            //string percorso = @"c:\teamsystemtemp\dati\daElaborare\";
+            //********* Come usare le KEY configurate in App.configy *********
+            string percorso = System.Configuration.ConfigurationSettings.AppSettings["percorso"];
             if (!Directory.Exists(percorso))
             {
                 Directory.CreateDirectory(percorso);
@@ -24,12 +28,22 @@ namespace Teamsystem.Corso.DatiLocali
                 while (!f.EndOfStream)
                 {
                     string dati = f.ReadLine();
-                    Console.WriteLine(dati);
+                    Console.WriteLine(dati); 
                 }
                 f.Close();
                 string nuovoNome = Path.GetFileName(file);
+                nuovoNome = Path.ChangeExtension(file,"worked");
+                File.Move(file, nuovoNome);
+                Console.WriteLine("File spostato");
 
             }
+
+            // ============== SCRITTURA DATI ===================
+            //con append = false se il file esiste verra sovrascritto se true verranno aggiunte info
+            StreamWriter fScrittura = new StreamWriter(percorso + DateTime.Now.ToString("yyyyMMddhhmmss") + ".txt", false);
+            fScrittura.WriteLine("riga esempio");
+            fScrittura.WriteLine("second riga esempio");
+            fScrittura.Close();
         }
     }
 }

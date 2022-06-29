@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CorsoTeamSystemModelStoreContainer" CdmEntityContainer="CorsoTeamSystemEntities">
+    <EntitySetMapping Name="Clienti">
+      <EntityTypeMapping TypeName="CorsoTeamSystemModel.Clienti">
+        <MappingFragment StoreEntitySet="Clienti">
+          <ScalarProperty Name="PartitaIVA" ColumnName="PartitaIVA" />
+          <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+          <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
+          <ScalarProperty Name="Nazione" ColumnName="Nazione" />
+          <ScalarProperty Name="Fatturato" ColumnName="Fatturato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ordini">
+      <EntityTypeMapping TypeName="CorsoTeamSystemModel.Ordini">
+        <MappingFragment StoreEntitySet="Ordini">
+          <ScalarProperty Name="IDOrdine" ColumnName="IDOrdine" />
+          <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+          <ScalarProperty Name="DataOrdine" ColumnName="DataOrdine" />
+          <ScalarProperty Name="Importo" ColumnName="Importo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vOrdini">
+      <EntityTypeMapping TypeName="CorsoTeamSystemModel.vOrdini">
+        <MappingFragment StoreEntitySet="vOrdini">
+          <ScalarProperty Name="Importo" ColumnName="Importo" />
+          <ScalarProperty Name="DataOrdine" ColumnName="DataOrdine" />
+          <ScalarProperty Name="Fatturato" ColumnName="Fatturato" />
+          <ScalarProperty Name="Nazione" ColumnName="Nazione" />
+          <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+          <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="p_InserisciCiente" FunctionName="CorsoTeamSystemModel.Store.p_InserisciCiente" />
+  </EntityContainerMapping>
+</Mapping>

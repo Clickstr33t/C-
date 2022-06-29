@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CorsoTeamSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clienti">
+    <Key>
+      <PropertyRef Name="IDCliente" />
+    </Key>
+    <Property Name="IDCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RagioneSociale" Type="varchar" MaxLength="50" />
+    <Property Name="Nazione" Type="varchar" MaxLength="50" />
+    <Property Name="Fatturato" Type="money" />
+    <Property Name="PartitaIVA" Type="varbinary" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Ordini">
+    <Key>
+      <PropertyRef Name="IDOrdine" />
+    </Key>
+    <Property Name="IDOrdine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCliente" Type="int" Nullable="false" />
+    <Property Name="DataOrdine" Type="datetime" />
+    <Property Name="Importo" Type="numeric" Precision="18" Scale="2" />
+  </EntityType>
+  <!--Errori trovati durante la generazione:
+avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'CorsoTeamSystem.dbo.vOrdini'. La chiave è stata dedotta e la definizione è stata creata come tabella/visualizzazione di sola lettura.-->
+  <EntityType Name="vOrdini">
+    <Key>
+      <PropertyRef Name="IDCliente" />
+    </Key>
+    <Property Name="RagioneSociale" Type="varchar" MaxLength="50" />
+    <Property Name="IDCliente" Type="int" Nullable="false" />
+    <Property Name="Nazione" Type="varchar" MaxLength="50" />
+    <Property Name="Fatturato" Type="money" />
+    <Property Name="DataOrdine" Type="datetime" />
+    <Property Name="Importo" Type="numeric" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_Ordini_Clienti">
+    <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+    <End Role="Ordini" Type="Self.Ordini" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clienti">
+        <PropertyRef Name="IDCliente" />
+      </Principal>
+      <Dependent Role="Ordini">
+        <PropertyRef Name="IDCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="p_InserisciCiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RagioneSociale" Type="varchar" Mode="In" />
+    <Parameter Name="nazione" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="CorsoTeamSystemModelStoreContainer">
+    <EntitySet Name="Clienti" EntityType="Self.Clienti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ordini" EntityType="Self.Ordini" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vOrdini" EntityType="Self.vOrdini" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vOrdini].[RagioneSociale] AS [RagioneSociale], 
+    [vOrdini].[IDCliente] AS [IDCliente], 
+    [vOrdini].[Nazione] AS [Nazione], 
+    [vOrdini].[Fatturato] AS [Fatturato], 
+    [vOrdini].[DataOrdine] AS [DataOrdine], 
+    [vOrdini].[Importo] AS [Importo]
+    FROM [dbo].[vOrdini] AS [vOrdini]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Ordini_Clienti" Association="Self.FK_Ordini_Clienti">
+      <End Role="Clienti" EntitySet="Clienti" />
+      <End Role="Ordini" EntitySet="Ordini" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

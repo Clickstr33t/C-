@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CorsoTeamSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RagioneSociale" Type="varchar" MaxLength="50" />
+          <Property Name="Nazione" Type="varchar" MaxLength="50" />
+          <Property Name="Fatturato" Type="money" />
+          <Property Name="PartitaIVA" Type="varbinary" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ordini">
+          <Key>
+            <PropertyRef Name="IDOrdine" />
+          </Key>
+          <Property Name="IDOrdine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCliente" Type="int" Nullable="false" />
+          <Property Name="DataOrdine" Type="datetime" />
+          <Property Name="Importo" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errori trovati durante la generazione:
+avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'CorsoTeamSystem.dbo.vOrdini'. La chiave è stata dedotta e la definizione è stata creata come tabella/visualizzazione di sola lettura.-->
+        <EntityType Name="vOrdini">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="RagioneSociale" Type="varchar" MaxLength="50" />
+          <Property Name="IDCliente" Type="int" Nullable="false" />
+          <Property Name="Nazione" Type="varchar" MaxLength="50" />
+          <Property Name="Fatturato" Type="money" />
+          <Property Name="DataOrdine" Type="datetime" />
+          <Property Name="Importo" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <Association Name="FK_Ordini_Clienti">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+          <End Role="Ordini" Type="Self.Ordini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="IDCliente" />
+            </Principal>
+            <Dependent Role="Ordini">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="p_InserisciCiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RagioneSociale" Type="varchar" Mode="In" />
+          <Parameter Name="nazione" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CorsoTeamSystemModelStoreContainer">
+          <EntitySet Name="Clienti" EntityType="Self.Clienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ordini" EntityType="Self.Ordini" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vOrdini" EntityType="Self.vOrdini" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vOrdini].[RagioneSociale] AS [RagioneSociale], 
+    [vOrdini].[IDCliente] AS [IDCliente], 
+    [vOrdini].[Nazione] AS [Nazione], 
+    [vOrdini].[Fatturato] AS [Fatturato], 
+    [vOrdini].[DataOrdine] AS [DataOrdine], 
+    [vOrdini].[Importo] AS [Importo]
+    FROM [dbo].[vOrdini] AS [vOrdini]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Ordini_Clienti" Association="Self.FK_Ordini_Clienti">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Ordini" EntitySet="Ordini" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CorsoTeamSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Ordini" Relationship="Self.FK_Ordini_Clienti" FromRole="Clienti" ToRole="Ordini" />
+          <Property Name="PartitaIVA" Type="Binary" MaxLength="50" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ordini">
+          <Key>
+            <PropertyRef Name="IDOrdine" />
+          </Key>
+          <Property Name="IDOrdine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="DataOrdine" Type="DateTime" Precision="3" />
+          <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Clienti" Relationship="Self.FK_Ordini_Clienti" FromRole="Ordini" ToRole="Clienti" />
+        </EntityType>
+        <Association Name="FK_Ordini_Clienti">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+          <End Role="Ordini" Type="Self.Ordini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="IDCliente" />
+            </Principal>
+            <Dependent Role="Ordini">
+              <PropertyRef Name="IDCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CorsoTeamSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clienti" EntityType="Self.Clienti" />
+          <EntitySet Name="Ordini" EntityType="Self.Ordini" />
+          <AssociationSet Name="FK_Ordini_Clienti" Association="Self.FK_Ordini_Clienti">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Ordini" EntitySet="Ordini" />
+          </AssociationSet>
+          <EntitySet Name="vOrdini" EntityType="CorsoTeamSystemModel.vOrdini" />
+          <FunctionImport Name="p_InserisciCiente">
+            <Parameter Name="RagioneSociale" Mode="In" Type="String" />
+            <Parameter Name="nazione" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="vOrdini">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DataOrdine" Type="DateTime" Precision="3" />
+          <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CorsoTeamSystemModelStoreContainer" CdmEntityContainer="CorsoTeamSystemEntities">
+          <EntitySetMapping Name="Clienti">
+            <EntityTypeMapping TypeName="CorsoTeamSystemModel.Clienti">
+              <MappingFragment StoreEntitySet="Clienti">
+                <ScalarProperty Name="PartitaIVA" ColumnName="PartitaIVA" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
+                <ScalarProperty Name="Nazione" ColumnName="Nazione" />
+                <ScalarProperty Name="Fatturato" ColumnName="Fatturato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ordini">
+            <EntityTypeMapping TypeName="CorsoTeamSystemModel.Ordini">
+              <MappingFragment StoreEntitySet="Ordini">
+                <ScalarProperty Name="IDOrdine" ColumnName="IDOrdine" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="DataOrdine" ColumnName="DataOrdine" />
+                <ScalarProperty Name="Importo" ColumnName="Importo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vOrdini">
+            <EntityTypeMapping TypeName="CorsoTeamSystemModel.vOrdini">
+              <MappingFragment StoreEntitySet="vOrdini">
+                <ScalarProperty Name="Importo" ColumnName="Importo" />
+                <ScalarProperty Name="DataOrdine" ColumnName="DataOrdine" />
+                <ScalarProperty Name="Fatturato" ColumnName="Fatturato" />
+                <ScalarProperty Name="Nazione" ColumnName="Nazione" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="p_InserisciCiente" FunctionName="CorsoTeamSystemModel.Store.p_InserisciCiente" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
