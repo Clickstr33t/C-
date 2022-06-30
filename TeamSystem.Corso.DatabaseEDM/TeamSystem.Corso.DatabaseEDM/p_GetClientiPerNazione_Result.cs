@@ -10,16 +10,13 @@
 namespace TeamSystem.Corso.DatabaseEDM
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class vOrdini
+    public partial class p_GetClientiPerNazione_Result
     {
-        public string RagioneSociale { get; set; }
         public int IDCliente { get; set; }
+        public string RagioneSociale { get; set; }
         public string Nazione { get; set; }
         public Nullable<decimal> Fatturato { get; set; }
-        public Nullable<System.DateTime> DataOrdine { get; set; }
-        public Nullable<decimal> Importo { get; set; }
-        public int IDOrdine { get; set; }
+        public byte[] PartitaIVA { get; set; }
     }
 }

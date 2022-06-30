@@ -31,6 +31,24 @@ namespace TeamSystem.Corso.DatabaseEDM
         public virtual DbSet<Ordini> Ordini { get; set; }
         public virtual DbSet<vOrdini> vOrdini { get; set; }
     
+        public virtual ObjectResult<Clienti> p_GetClientiPerNazione(string nazione)
+        {
+            var nazioneParameter = nazione != null ?
+                new ObjectParameter("nazione", nazione) :
+                new ObjectParameter("nazione", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Clienti>("p_GetClientiPerNazione", nazioneParameter);
+        }
+    
+        public virtual ObjectResult<Clienti> p_GetClientiPerNazione(string nazione, MergeOption mergeOption)
+        {
+            var nazioneParameter = nazione != null ?
+                new ObjectParameter("nazione", nazione) :
+                new ObjectParameter("nazione", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Clienti>("p_GetClientiPerNazione", mergeOption, nazioneParameter);
+        }
+    
         public virtual int p_InserisciCiente(string ragioneSociale, string nazione)
         {
             var ragioneSocialeParameter = ragioneSociale != null ?

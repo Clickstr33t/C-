@@ -16,7 +16,7 @@ namespace TeamSystem.Corso.DatabaseEDM
 
             //ctx sta per contesto (scelta semantica)
             CorsoTeamSystemEntities ctx = new CorsoTeamSystemEntities();
-
+           
             // ************ QUERY NAZIONALITA' ITALIANA ************
             var clientiItalia = ctx.Clienti
                 .Where(x => x.Nazione == "IT")
@@ -142,6 +142,27 @@ namespace TeamSystem.Corso.DatabaseEDM
 
             ctx.p_InserisciCiente("INSERIMENTO DA SP", "IT");
 
+
+            /*
+             Seconda Stor Preocedure
+            
+             CODICE:
+            create proc p_GetClientiPerNazione @nazione varchar(50)
+            as
+            select * from Clienti where nazione = @nazione
+
+            CHIAMATA SQL:
+            exec p_GetClientiPerNazione "IT"
+            */
+
+            var clientiDaSP = ctx.p_GetClientiPerNazione("IT").ToList();
+            foreach (var item in clientiDaSP)
+            {
+                Console.WriteLine("Da PS: " + item.RagioneSociale);
+           }
+
+            // video 1 giorno 4 41:06
         }
     }
 }
+ 

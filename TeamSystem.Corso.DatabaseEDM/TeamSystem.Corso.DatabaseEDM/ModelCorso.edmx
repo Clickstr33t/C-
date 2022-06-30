@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CorsoTeamSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CorsoTeamSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clienti">
           <Key>
             <PropertyRef Name="IDCliente" />
@@ -29,6 +29,7 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
         <EntityType Name="vOrdini">
           <Key>
             <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="IDOrdine" />
           </Key>
           <Property Name="RagioneSociale" Type="varchar" MaxLength="50" />
           <Property Name="IDCliente" Type="int" Nullable="false" />
@@ -36,6 +37,7 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
           <Property Name="Fatturato" Type="money" />
           <Property Name="DataOrdine" Type="datetime" />
           <Property Name="Importo" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="IDOrdine" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Ordini_Clienti">
           <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
@@ -49,6 +51,9 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="p_GetClientiPerNazione" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nazione" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="p_InserisciCiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RagioneSociale" Type="varchar" Mode="In" />
           <Parameter Name="nazione" Type="varchar" Mode="In" />
@@ -63,7 +68,8 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
     [vOrdini].[Nazione] AS [Nazione], 
     [vOrdini].[Fatturato] AS [Fatturato], 
     [vOrdini].[DataOrdine] AS [DataOrdine], 
-    [vOrdini].[Importo] AS [Importo]
+    [vOrdini].[Importo] AS [Importo], 
+    [vOrdini].[IDOrdine] AS [IDOrdine]
     FROM [dbo].[vOrdini] AS [vOrdini]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Ordini_Clienti" Association="Self.FK_Ordini_Clienti">
@@ -71,7 +77,8 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
             <End Role="Ordini" EntitySet="Ordini" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CorsoTeamSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -82,9 +89,9 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
           <Property Name="IDCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Ordini" Relationship="Self.FK_Ordini_Clienti" FromRole="Clienti" ToRole="Ordini" />
+          <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" ConcurrencyMode="Fixed" />
           <Property Name="PartitaIVA" Type="Binary" MaxLength="50" FixedLength="false" />
+          <NavigationProperty Name="Ordini" Relationship="Self.FK_Ordini_Clienti" FromRole="Clienti" ToRole="Ordini" />
         </EntityType>
         <EntityType Name="Ordini">
           <Key>
@@ -95,6 +102,19 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
           <Property Name="DataOrdine" Type="DateTime" Precision="3" />
           <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="Clienti" Relationship="Self.FK_Ordini_Clienti" FromRole="Ordini" ToRole="Clienti" />
+        </EntityType>
+        <EntityType Name="vOrdini">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+            <PropertyRef Name="IDOrdine" />
+          </Key>
+          <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DataOrdine" Type="DateTime" Precision="3" />
+          <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IDOrdine" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Ordini_Clienti">
           <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
@@ -111,27 +131,26 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
         <EntityContainer Name="CorsoTeamSystemEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clienti" EntityType="Self.Clienti" />
           <EntitySet Name="Ordini" EntityType="Self.Ordini" />
+          <EntitySet Name="vOrdini" EntityType="Self.vOrdini" />
           <AssociationSet Name="FK_Ordini_Clienti" Association="Self.FK_Ordini_Clienti">
             <End Role="Clienti" EntitySet="Clienti" />
             <End Role="Ordini" EntitySet="Ordini" />
           </AssociationSet>
-          <EntitySet Name="vOrdini" EntityType="CorsoTeamSystemModel.vOrdini" />
+          <FunctionImport Name="p_GetClientiPerNazione" EntitySet="Clienti" ReturnType="Collection(CorsoTeamSystemModel.Clienti)">
+            <Parameter Name="nazione" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="p_InserisciCiente">
             <Parameter Name="RagioneSociale" Mode="In" Type="String" />
             <Parameter Name="nazione" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
-        <EntityType Name="vOrdini">
-          <Key>
-            <PropertyRef Name="IDCliente" />
-          </Key>
-          <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IDCliente" Type="Int32" Nullable="false" />
-          <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DataOrdine" Type="DateTime" Precision="3" />
-          <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
+        <ComplexType Name="p_GetClientiPerNazione_Result">
+          <Property Type="Int32" Name="IDCliente" Nullable="false" />
+          <Property Type="String" Name="RagioneSociale" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nazione" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Fatturato" Nullable="true" Precision="19" />
+          <Property Type="Binary" Name="PartitaIVA" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -141,11 +160,11 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
           <EntitySetMapping Name="Clienti">
             <EntityTypeMapping TypeName="CorsoTeamSystemModel.Clienti">
               <MappingFragment StoreEntitySet="Clienti">
-                <ScalarProperty Name="PartitaIVA" ColumnName="PartitaIVA" />
                 <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
                 <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
                 <ScalarProperty Name="Nazione" ColumnName="Nazione" />
                 <ScalarProperty Name="Fatturato" ColumnName="Fatturato" />
+                <ScalarProperty Name="PartitaIVA" ColumnName="PartitaIVA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -162,15 +181,18 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
           <EntitySetMapping Name="vOrdini">
             <EntityTypeMapping TypeName="CorsoTeamSystemModel.vOrdini">
               <MappingFragment StoreEntitySet="vOrdini">
-                <ScalarProperty Name="Importo" ColumnName="Importo" />
-                <ScalarProperty Name="DataOrdine" ColumnName="DataOrdine" />
-                <ScalarProperty Name="Fatturato" ColumnName="Fatturato" />
-                <ScalarProperty Name="Nazione" ColumnName="Nazione" />
-                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
                 <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+                <ScalarProperty Name="Nazione" ColumnName="Nazione" />
+                <ScalarProperty Name="Fatturato" ColumnName="Fatturato" />
+                <ScalarProperty Name="DataOrdine" ColumnName="DataOrdine" />
+                <ScalarProperty Name="Importo" ColumnName="Importo" />
+                <ScalarProperty Name="IDOrdine" ColumnName="IDOrdine" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="p_GetClientiPerNazione" FunctionName="CorsoTeamSystemModel.Store.p_GetClientiPerNazione">
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="p_InserisciCiente" FunctionName="CorsoTeamSystemModel.Store.p_InserisciCiente" />
         </EntityContainerMapping>
       </Mapping>

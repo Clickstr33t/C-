@@ -1,0 +1,8 @@
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DBOldStyle\TeamSystem.Corso.DBOldStyle\bin\Debug\TeamSystem.Corso.DBOldStyle.exe.config
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DBOldStyle\TeamSystem.Corso.DBOldStyle\bin\Debug\TeamSystem.Corso.DBOldStyle.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DBOldStyle\TeamSystem.Corso.DBOldStyle\bin\Debug\TeamSystem.Corso.DBOldStyle.pdb
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DBOldStyle\TeamSystem.Corso.DBOldStyle\obj\Debug\TeamSystem.Corso.DBOldStyle.csproj.AssemblyReference.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DBOldStyle\TeamSystem.Corso.DBOldStyle\obj\Debug\TeamSystem.Corso.DBOldStyle.csproj.SuggestedBindingRedirects.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DBOldStyle\TeamSystem.Corso.DBOldStyle\obj\Debug\TeamSystem.Corso.DBOldStyle.csproj.CoreCompileInputs.cache
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DBOldStyle\TeamSystem.Corso.DBOldStyle\obj\Debug\TeamSystem.Corso.DBOldStyle.exe
+C:\Users\service.mae\source\repos\TeamSystem.Corso.DBOldStyle\TeamSystem.Corso.DBOldStyle\obj\Debug\TeamSystem.Corso.DBOldStyle.pdb

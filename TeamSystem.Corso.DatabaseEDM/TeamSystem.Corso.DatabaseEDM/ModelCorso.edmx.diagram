@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a1b8b48eebf84de5a8826d904b47c146" Name="Diagram1">
+      <Diagram DiagramId="92e6eb6e1ce5414eaa3bf0ab2fccb23f" Name="Diagram1">
         <EntityTypeShape EntityType="CorsoTeamSystemModel.Clienti" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CorsoTeamSystemModel.Ordini" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CorsoTeamSystemModel.Ordini" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CorsoTeamSystemModel.vOrdini" Width="1.5" PointX="5" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="CorsoTeamSystemModel.FK_Ordini_Clienti" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="CorsoTeamSystemModel.vOrdini" Width="1.5" PointX="5.625" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

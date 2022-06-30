@@ -24,6 +24,7 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
   <EntityType Name="vOrdini">
     <Key>
       <PropertyRef Name="IDCliente" />
+      <PropertyRef Name="IDOrdine" />
     </Key>
     <Property Name="RagioneSociale" Type="varchar" MaxLength="50" />
     <Property Name="IDCliente" Type="int" Nullable="false" />
@@ -31,6 +32,7 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
     <Property Name="Fatturato" Type="money" />
     <Property Name="DataOrdine" Type="datetime" />
     <Property Name="Importo" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="IDOrdine" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Ordini_Clienti">
     <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
@@ -44,6 +46,9 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="p_GetClientiPerNazione" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nazione" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="p_InserisciCiente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="RagioneSociale" Type="varchar" Mode="In" />
     <Parameter Name="nazione" Type="varchar" Mode="In" />
@@ -58,7 +63,8 @@ avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'Co
     [vOrdini].[Nazione] AS [Nazione], 
     [vOrdini].[Fatturato] AS [Fatturato], 
     [vOrdini].[DataOrdine] AS [DataOrdine], 
-    [vOrdini].[Importo] AS [Importo]
+    [vOrdini].[Importo] AS [Importo], 
+    [vOrdini].[IDOrdine] AS [IDOrdine]
     FROM [dbo].[vOrdini] AS [vOrdini]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_Ordini_Clienti" Association="Self.FK_Ordini_Clienti">

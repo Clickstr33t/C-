@@ -8,8 +8,8 @@
     <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
-    <NavigationProperty Name="Ordini" Relationship="Self.FK_Ordini_Clienti" FromRole="Clienti" ToRole="Ordini" />
     <Property Name="PartitaIVA" Type="Binary" MaxLength="50" FixedLength="false" />
+    <NavigationProperty Name="Ordini" Relationship="Self.FK_Ordini_Clienti" FromRole="Clienti" ToRole="Ordini" />
   </EntityType>
   <EntityType Name="Ordini">
     <Key>
@@ -20,6 +20,19 @@
     <Property Name="DataOrdine" Type="DateTime" Precision="3" />
     <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
     <NavigationProperty Name="Clienti" Relationship="Self.FK_Ordini_Clienti" FromRole="Ordini" ToRole="Clienti" />
+  </EntityType>
+  <EntityType Name="vOrdini">
+    <Key>
+      <PropertyRef Name="IDCliente" />
+      <PropertyRef Name="IDOrdine" />
+    </Key>
+    <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DataOrdine" Type="DateTime" Precision="3" />
+    <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IDOrdine" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_Ordini_Clienti">
     <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
@@ -36,25 +49,24 @@
   <EntityContainer Name="CorsoTeamSystemEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Clienti" EntityType="Self.Clienti" />
     <EntitySet Name="Ordini" EntityType="Self.Ordini" />
+    <EntitySet Name="vOrdini" EntityType="Self.vOrdini" />
     <AssociationSet Name="FK_Ordini_Clienti" Association="Self.FK_Ordini_Clienti">
       <End Role="Clienti" EntitySet="Clienti" />
       <End Role="Ordini" EntitySet="Ordini" />
     </AssociationSet>
-    <EntitySet Name="vOrdini" EntityType="CorsoTeamSystemModel.vOrdini" />
+    <FunctionImport Name="p_GetClientiPerNazione" EntitySet="Clienti" ReturnType="Collection(CorsoTeamSystemModel.Clienti)">
+      <Parameter Name="nazione" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="p_InserisciCiente">
       <Parameter Name="RagioneSociale" Mode="In" Type="String" />
       <Parameter Name="nazione" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
-  <EntityType Name="vOrdini">
-    <Key>
-      <PropertyRef Name="IDCliente" />
-    </Key>
-    <Property Name="RagioneSociale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="IDCliente" Type="Int32" Nullable="false" />
-    <Property Name="Nazione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Fatturato" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="DataOrdine" Type="DateTime" Precision="3" />
-    <Property Name="Importo" Type="Decimal" Precision="18" Scale="2" />
-  </EntityType>
+  <ComplexType Name="p_GetClientiPerNazione_Result">
+    <Property Type="Int32" Name="IDCliente" Nullable="false" />
+    <Property Type="String" Name="RagioneSociale" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Nazione" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Fatturato" Nullable="true" Precision="19" />
+    <Property Type="Binary" Name="PartitaIVA" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>
